@@ -56,6 +56,11 @@
                         <input type="text" name="name" id="name" required>
                     </div>
 
+                    <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                        <label class="custom-file-label" for="chooseFile">Select file</label>
+                    </div>
+
                     <div>
                         <label for="email[0]">Email</label>
                         <input type="text" name="email[0]" id="email" required>

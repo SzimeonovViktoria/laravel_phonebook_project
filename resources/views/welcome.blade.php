@@ -23,6 +23,7 @@
         <table class="table table-md">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone number</th>
@@ -38,6 +39,7 @@
                 @foreach ($users as $user)
 
                     <tr>
+                        <td><img width="50" height="50" src="avatar/{{ $user->avatar }}"></td>
                         <td>{{ $user->name }}</td>
                         <td style="word-break: break-word">{{ $user->email }}</td>
                         <td style="word-break: break-word">{{ $user->phone_number }}</td>

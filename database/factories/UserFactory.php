@@ -18,7 +18,6 @@
 
             return [
                 'name'            => fake()->name(),
-                'avatar'          => fake()->image,
                 'home_country'    => fake()->country(),
                 'home_city'       => fake()->city(),
                 'home_address'    => fake()->address(),

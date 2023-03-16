@@ -4,6 +4,8 @@
 
     use App\Http\Resources\UserIndexResource;
     use App\Models\User;
+    use App\Models\UserEmail;
+    use App\Models\UserPhoneNumber;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
     use Illuminate\Foundation\Application;
@@ -42,11 +44,19 @@
                 'checkbox'        => 'sometimes'
             ] );
 
+            //request()->validate( [
+            //    'file' => 'sometimes|mimes:png,jpeg,jpg'
+            //] );
+
+            //$fileName = time().'_file';
+            //request()->file( 'file' )->storeAs( 'avatar', $fileName, 'public' );
+
             try{
-                DB::transaction( function() use ( $attributes ){
+                DB::transaction( function() use (/*$fileName*/ $attributes ){
 
                     $id = User::create( [
                         'name'            => $attributes['name'],
+                        //'avatar'          => $fileName,
                         'home_country'    => $attributes['home_country'],
                         'home_city'       => $attributes['home_city'],
                         'home_address'    => $attributes['home_address'],

@@ -15,7 +15,7 @@
 
                 $table->id();
                 $table->string( 'name' );
-                $table->string( 'avatar' )->nullable();
+                $table->string( 'avatar' )->default('avatar.png');;
                 $table->string( 'home_country' )->nullable();
                 $table->string( 'home_city' )->nullable();
                 $table->string( 'home_address' )->nullable();
