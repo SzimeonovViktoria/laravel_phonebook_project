@@ -22,17 +22,23 @@
         <script>
             let i_email = 1;
             let i_phone = 1;
+            let address = false;
 
             function add_email(){
-                var dummy = '<div> <label for="email[' + i_email + ']">Email</label> <input type="text" name="email[' + i_email + ']" required> </div>';
+                let dummy = '<div> <label for="email[' + i_email + ']">Email</label> <input type="text" name="email[' + i_email + ']" required> </div>';
                 document.getElementById('emailWrapper').innerHTML += dummy;
                 i_email++;
             }
 
             function add_phone_number(){
-                var dummy = '<div> <label for="phone_number[' + i_phone + ']">Phone number</label> <input type="text" name="phone_number[' + i_phone + ']"> </div>';
+                let dummy = '<div> <label for="phone_number[' + i_phone + ']">Phone number</label> <input type="text" name="phone_number[' + i_phone + ']"> </div>';
                 document.getElementById('phoneNumberWrapper').innerHTML += dummy;
                 i_phone++;
+            }
+
+            function same_address(){
+                address = !address;
+                address === true ? document.getElementById('mailingAddress').style.display = 'none' : document.getElementById('mailingAddress').style.display = 'block';
             }
         </script>
     </head>
@@ -88,23 +94,31 @@
                     </div>
 
                     <div>
-                        <label for="mailing_country">Mailing country</label>
-
-                        <input type="text" name="mailing_country" id="mailing_country">
+                        <input type="checkbox" name="checkbox" onclick="same_address()">
+                        <label>Same address</label>
                     </div>
 
-                    <div>
-                        <label for="mailing_city">Mailing city</label>
+                    <div id="mailingAddress">
 
-                        <input type="text" name="mailing_city" id="mailing_city">
+
+                        <div>
+                            <label for="mailing_country">Mailing country</label>
+
+                            <input type="text" name="mailing_country" id="mailing_country">
+                        </div>
+
+                        <div>
+                            <label for="mailing_city">Mailing city</label>
+
+                            <input type="text" name="mailing_city" id="mailing_city">
+                        </div>
+
+                        <div>
+                            <label for="mailing_address">Mailing address</label>
+
+                            <input type="text" name="mailing_address" id="mailing_address">
+                        </div>
                     </div>
-
-                    <div>
-                        <label for="mailing_address">Mailing address</label>
-
-                        <input type="text" name="mailing_address" id="mailing_address">
-                    </div>
-
 
                     <div>
                         <button type="submit">Submit</button>

@@ -39,6 +39,7 @@
                 'mailing_address' => 'sometimes|max:255',
                 'email.*'         => 'required|email|unique:user_emails,email',
                 'phone_number.*'  => 'sometimes|max:255',
+                'checkbox'        => 'sometimes'
             ] );
 
             try{
@@ -49,9 +50,9 @@
                         'home_country'    => $attributes['home_country'],
                         'home_city'       => $attributes['home_city'],
                         'home_address'    => $attributes['home_address'],
-                        'mailing_country' => $attributes['mailing_country'],
-                        'mailing_city'    => $attributes['mailing_city'],
-                        'mailing_address' => $attributes['mailing_address'],
+                        'mailing_country' => ( isset( $attributes['checkbox'] ) ) ? $attributes['home_country'] : $attributes['mailing_country'],
+                        'mailing_city'    => ( isset( $attributes['checkbox'] ) ) ? $attributes['home_city'] : $attributes['mailing_city'],
+                        'mailing_address' => ( isset( $attributes['checkbox'] ) ) ? $attributes['home_address'] : $attributes['mailing_address'],
                     ] )->id;
 
                     foreach( $attributes['email'] as $email ){
