@@ -24,4 +24,33 @@
 
             return view( "welcome", compact( 'users' ) );
         }
+
+        public function store(){
+
+            $attributes = request()->validate( [
+                'name'            => 'required|max:255',
+                'home_country'    => 'sometimes|max:255',
+                'home_city'       => 'sometimes|max:255',
+                'home_address'    => 'sometimes|max:255',
+                'mailing_country' => 'sometimes|max:255',
+                'mailing_city'    => 'sometimes|max:255',
+                'mailing_address' => 'sometimes|max:255',
+            ] );
+
+            DB::transaction( function() use ( $attributes ){
+
+                User::create( [
+                    'name'            => $attributes['name'],
+                    'home_country'    => $attributes['home_country'],
+                    'home_city'       => $attributes['home_city'],
+                    'home_address'    => $attributes['home_address'],
+                    'mailing_country' => $attributes['mailing_country'],
+                    'mailing_city'    => $attributes['mailing_city'],
+                    'mailing_address' => $attributes['mailing_address'],
+                ] );
+            } );
+
+
+            return redirect( '/' );
+        }
     }

@@ -15,3 +15,5 @@
     */
 
     Route::get( '/', [UserController::class, 'index'] )->name( 'user.index' );
+    Route::get( '/add', function(){ return view( "add" ); } )->name( 'user.add' );
+    Route::post( 'added-new', [UserController::class, 'store'] )->middleware( 'guest' );
