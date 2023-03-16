@@ -2,12 +2,11 @@
 
     namespace App\Models;
 
-    // use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Relations\HasMany;
-    use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-    class User extends Authenticatable{
+    class UserPhoneNumber extends Model{
 
         use HasFactory;
 
@@ -16,9 +15,7 @@
          *
          * @var array<int, string>
          */
-        protected $fillable = [
-            'name',
-        ];
+        protected $fillable = [];
 
         /**
          * The attributes that should be hidden for serialization.
@@ -35,17 +32,10 @@
          *
          * @var array<string, string>
          */
-        protected $casts = [
+        protected $casts = [];
 
-        ];
+        public function user(): BelongsTo{
 
-        public function emails(): HasMany{
-
-            return $this->hasMany( UserEmail::class );
-        }
-
-        public function phoneNumbers(): HasMany{
-
-            return $this->hasMany( UserPhoneNumber::class );
+            return $this->belongsTo( User::class );
         }
     }
